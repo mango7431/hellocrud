@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<meta charset="UTF-8">
+<link rel="import" href="header/header.html">
+<head>
+
+  <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+  <h1> 메인페이지입니다.</h1>
+  <a href="members/new">회원가입</a>
+  <a href="members/login">로그인</a>
+
+  <p>email : <span th:text="${session.JSESSIONID}"></span></p>
+  <p>email : <span th:text="${session.jsessionid}"></span></p>
+
+</div>
+</body>
+</html>
