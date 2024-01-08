@@ -1,22 +1,13 @@
 package HelloCRUD.hello.config;
 
 import HelloCRUD.hello.service.MemberService;
-import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.session.SessionRegistryImpl;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -39,15 +30,9 @@ public class SecurityConfig {
 
         /*http.csrf(AbstractHttpConfigurer::disable)*/
         http.csrf((csrfConfig) -> csrfConfig.disable())
-/*                .authorizeHttpRequests(auth->auth
-                        .requestMatchers(
-                                new AntPathRequestMatcher("/"),
-                                new AntPathRequestMatcher("/member/login"),
-                                new AntPathRequestMatcher("/member/new")
-                        ).permitAll()
-                )*/
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/","/members/**").permitAll()
+                        .requestMatchers("/","/members/**","/board/**").permitAll()
+                        .requestMatchers("/js/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
@@ -65,15 +50,12 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
     /*@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(memberService)
                 .passwordEncoder(passwordEncoder());
     }*/
+
 
 }

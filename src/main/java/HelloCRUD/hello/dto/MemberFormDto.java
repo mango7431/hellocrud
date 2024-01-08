@@ -5,10 +5,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
+@ToString
 public class MemberFormDto {
 
     @NotBlank(message = "이름은 필수 입력 값입니다.")

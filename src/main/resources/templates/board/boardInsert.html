@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<meta charset="UTF-8">
+
+<div layout:fragment="content">
+
+    <div class="container">
+
+        <h2>게시글 등록</h2>
+        <form method="post" action="/board/insertBoard">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title"><br>
+
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content"></textarea><br>
+
+            <label for="writer">Writer:</label><br>
+            <input type="text" id="writer" name="writer" th:value="*{email}" readonly><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+
+</div>
+
+
+</html>

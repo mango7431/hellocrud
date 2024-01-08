@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,13 +52,13 @@ public class MemberController {
 
     @GetMapping(value = "/login")
     public String loginMember(){
-        return "/member/memberLoginForm";
+        return "member/memberLoginForm";
     }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해주세요");
-        return "/member/memberLoginForm";
+        return "member/memberLoginForm";
     }
 
     @GetMapping(value = "/myPage")
@@ -68,10 +67,27 @@ public class MemberController {
         log.info("유저 이메일 : {}",principal.getName());
 
         String userid=principal.getName();
-        Member member = memberService.fingByEmail(userid);
+        Member member = memberService.findByEmail(userid);
         model.addAttribute("member",member);
 
         return "member/myPage";
+    }
+
+    @GetMapping("/checkPwd")
+    public String checkPwdView(){
+        return "member/checkPwd";
+    }
+
+    @GetMapping(value = "/update")
+    public String memberUpdate(Principal principal, Model model){
+        log.info("유저 정보 {}",principal);
+        log.info("유저 이메일 : {}",principal.getName());
+
+        String userid = principal.getName();
+        Member member = memberService.findByEmail(userid);
+        model.addAttribute("member",member);
+
+        return "member/memberUpdate";
     }
 
 }
