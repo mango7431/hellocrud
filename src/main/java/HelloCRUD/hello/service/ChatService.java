@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -26,5 +27,16 @@ public class ChatService {
         ChatRoom chatRoom = ChatRoom.createRoom(roomFormDto);
         chatRoomRepository.save(chatRoom);
 
+    }
+
+    public ChatRoom findByRoomId(Long roomId) {
+
+        Optional<ChatRoom> optionalChatRoom = chatRoomRepository.findById(roomId);
+        ChatRoom chatRoom = new ChatRoom();
+        if(optionalChatRoom.isPresent()){
+            chatRoom = optionalChatRoom.get();
+        }
+
+        return chatRoom;
     }
 }

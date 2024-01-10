@@ -22,7 +22,7 @@ public class ChatRoomController {
     public String rooms(Model model) {
         List<ChatRoom> chatRoomList = chatService.findAllRoom();
         model.addAttribute("chatRoomList",chatRoomList);
-        return "/chat/room";
+        return "chat/room";
     }
     // 채팅방 생성
     @PostMapping("/room")

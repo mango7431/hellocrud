@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "chatroom")
@@ -22,6 +23,9 @@ public class ChatRoom {
     private Long id;
     private String roomName;
     private LocalDateTime createdDate;  //생성일시
+
+    @OneToMany(mappedBy = "message", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Message> message;
 
     public static ChatRoom createRoom(RoomFormDto roomFormDto) {
         ChatRoom room = new ChatRoom();

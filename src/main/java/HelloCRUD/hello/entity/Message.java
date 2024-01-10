@@ -20,7 +20,9 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //채팅방 ID
-    private Long roomId;
+    @ManyToOne(fetch =FetchType.LAZY)
+    @JoinColumn(name="chatroom_id", nullable = false)
+    private ChatRoom roomId;
     //보내는 사람
     private String sender;
     //보내는 사람의 이메일
@@ -30,9 +32,9 @@ public class Message {
     //작성일
     private LocalDateTime sendDate;
 
-    public static Message createMessage(MessageFormDto messageFormDto){
+    public static Message createMessage(MessageFormDto messageFormDto, ChatRoom chatRoom){
         Message message1 = new Message();
-        message1.setRoomId(messageFormDto.getRoomId());
+        message1.setRoomId(chatRoom);
         message1.setSender(messageFormDto.getSender());
         message1.setSenderEmail(messageFormDto.getSenderEmail());
         message1.setMessage(messageFormDto.getMessage());
