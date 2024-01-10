@@ -102,9 +102,9 @@ public class MemberService implements UserDetailsService{
 
         int result;
         if(member2==null){
-            result = 0;
-        }else{
             result = 1;
+        }else{
+            result = 0;
         }
 
         return result;

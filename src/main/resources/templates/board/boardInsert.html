@@ -10,14 +10,20 @@
 
         <h2>게시글 등록</h2>
         <form method="post" action="/board/insertBoard">
-            <label for="title">Title:</label><br>
-            <input type="text" id="title" name="title"><br>
+            <div class="mb-3">
+                <label th:for="title" class="form-label">Title:</label>
+                <input type="text" th:id="title" class="form-control" th:name="title">
+            </div>
 
-            <label for="content">Content:</label><br>
-            <textarea id="content" name="content"></textarea><br>
+            <div class="mb-3">
+                <label th:for="writer" class="form-label">Writer:</label>
+                <input type="text" th:id="writer" class="form-control" th:value="*{email}" readonly>
+            </div>
 
-            <label for="writer">Writer:</label><br>
-            <input type="text" id="writer" name="writer" th:value="*{email}" readonly><br>
+            <div class="mb-3">
+                <label th:for="content" class="form-label">Content:</label><br>
+                <textarea class="form-control" th:id="content" rows="3" th:name="content"></textarea>
+            </div>
 
             <input type="submit" value="Submit">
         </form>

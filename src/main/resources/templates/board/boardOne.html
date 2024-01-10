@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<meta charset="UTF-8">
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+    <script th:inline="javascript">
+
+        function deleteBoard(){
+            const id = [[ ${board.id}  ]];
+
+            if(!confirm(id + '번 게시글을 삭제할까요?')){
+                return false;
+            }
+
+            $.ajax({
+                type: "put",
+                url: "/board/deleteOK",
+                data:{
+                    "id": id
+                },
+                dataType:"JSON",
+                success: function (result){
+                    console.log(result);
+                    if (result===0) {
+                        console.log(result)
+                        alert("게시글이 삭제 되었습니다.");
+                        window.location.href="/board/selectList";
+                    } else{
+                        alert("게시글이 삭제 실패.");
+                    }
+                },
+                error:function (request, status, error){
+                    alert("ajax 실행 실패");
+                    alert("code:" + request.status + "\n" + "error :" + error);
+                }
+            });
+        }
+
+    </script>
+
+</th:block>
+
+<div layout:fragment="content">
+
+    <div class="container">
+        <div class="input-form-backgroud row">
+            <div class="input-form col-md-12 mx-auto">
+                <h4 class="mb-3">상세 페이지</h4>
+                <p>방문 횟수 : <label th:text="${board.viewCnt}"></label></p>
+                <div class="mb-3">
+                    <label th:for="title" class="form-label">제목</label>
+                    <input class="form-control" th:type="text" th:id="title" th:value="${board.title}" aria-label="readonly input example" readonly>
+                </div>
+                <div class="d-flex">
+                    <div class="col mb-3">
+                        <label th:for="email" class="form-label">이메일</label>
+                        <input class="form-control" th:type="text" th:id="email" th:value="${board.email}" aria-label="readonly input example" readonly>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4 mb-3">
+                        <label th:for="createdDate" class="form-label">작성일</label>
+                        <input class="form-control" th:type="text" th:id="createdDate" th:value="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm:ss')}" aria-label="readonly input example" readonly>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4 mb-3">
+                        <label th:for="modifiedDate" class="form-label">최종 수정일</label>
+                        <input class="form-control" th:type="text" th:id="modifiedDate" th:value="${#temporals.format(board.modifiedDate, 'yyyy-MM-dd HH:mm:ss')}" aria-label="readonly input example" readonly>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label th:for="content" class="form-label">내용</label>
+                    <textarea class="form-control" th:id="content" rows="10" th:text="${board.content}" aria-label="readonly input example" readonly></textarea>
+                </div>
+                <span th:if="${#authentication.name} == ${board.email}">
+                   <!-- &lt;!&ndash;<button th:onclick="|location.href='@{/board/{postId}/edit(postId=${post.id})}'|" type="button">수정</button>&ndash;&gt;-->
+                    <button type="button" th:onclick="|location.href='@{/board/update(id=${board.id})}'|" >수정</button>
+                    <button type="button" onclick="deleteBoard();">삭제</button>
+                </span>
+            </div>
+
+        </div>
+        <footer class="my-3 text-center text-small">
+            <p class="mb-1">&copy; 2024 YD</p>
+        </footer>
+    </div>
+
+</div>
+
+
+</html>

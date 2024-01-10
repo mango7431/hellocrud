@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/layout1}">
+<meta charset="UTF-8">
+
+<div layout:fragment="content">
+
+    <div class="container">
+        <form method="post" action="/board/updateBoard">
+        <div class="input-form-backgroud row">
+            <div class="input-form col-md-12 mx-auto">
+                <h4 class="mb-3">상세 페이지</h4>
+                <p>방문 횟수 : <label th:text="${board.viewCnt}"></label></p>
+                <input type="hidden" th:id="id" class="form-control" th:name="id" th:value="${board.id}">
+                <input type="hidden" th:id="viewCnt" class="form-control" th:name="viewCnt" th:value="${board.viewCnt}">
+                <div class="mb-3">
+                    <label th:for="title" class="form-label">제목</label>
+                    <input class="form-control" th:type="text" th:id="title" th:name="title" th:value="${board.title}">
+                </div>
+                <div class="d-flex">
+                    <div class="col-md-4 mb-3">
+                        <label th:for="email" class="form-label">이메일</label>
+                        <input class="form-control" th:type="text" th:id="email" th:name="email" th:value="${board.email}" aria-label="readonly input example" readonly>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 mb-3">
+                        <label th:for="createdDate" class="form-label">날짜</label>
+                        <input class="form-control" th:type="text" th:id="createdDate" th:value="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm:ss')}" aria-label="readonly input example" readonly>
+                        <input class="form-control" th:type="hidden" th:name="createdDate" th:value="${board.createdDate}">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label th:for="content" class="form-label">내용</label>
+                    <textarea class="form-control" th:id="content" rows="10" th:name="content" th:text="${board.content}"></textarea>
+                </div>
+                <span th:if="${#authentication.name} == ${board.email}">
+                   <!-- &lt;!&ndash;<button th:onclick="|location.href='@{/board/{postId}/edit(postId=${post.id})}'|" type="button">수정</button>&ndash;&gt;-->
+                    <button type="submit">수정완료</button>
+                </span>
+            </div>
+        </div>
+        </form>
+        <footer class="my-3 text-center text-small">
+            <p class="mb-1">&copy; 2024 YD</p>
+        </footer>
+    </div>
+</div>
+
+
+</html>
