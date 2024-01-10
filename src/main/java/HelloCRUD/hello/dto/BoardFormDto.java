@@ -1,5 +1,6 @@
 package HelloCRUD.hello.dto;
 
+import HelloCRUD.hello.entity.Member;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -15,7 +16,7 @@ public class BoardFormDto {
     private String title;
     @NotEmpty(message = "내용은 필수 입력 값입니다.")
     private String content;
-    private String writer;
+    private Member member;
 
 
 
