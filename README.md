@@ -26,14 +26,14 @@
 
 
 #### 🛠 Project Tools 🛠 
-![Static Badge](https://img.shields.io/badge/IntelliJ-2C2255?style=flat&logo=IntelliJ&logoColor=white) ![Static Badge](https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white) ![Static Badge](https://img.shields.io/badge/SQLDeveloper-000000?style=flat&logo=SQLDeveloper&logoColor=white)
+![Static Badge](https://img.shields.io/badge/IntelliJ-2C2255?style=flat&logo=IntelliJ&logoColor=white) ![Static Badge](https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white) ![Static Badge](https://img.shields.io/badge/MySql-000000?style=flat&logo=SQLDeveloper&logoColor=white)
 
 #### 📚 Tech Stack 📚 
 **프론트엔드** <br>
 ![Static Badge](https://img.shields.io/badge/HTML-E34F26?style=flat&logo=HTML5&logoColor=white) ![Static Badge](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=CSS3&logoColor=white) ![Static Badge](https://img.shields.io/badge/Javascript-F7DF1E?style=flat&logo=Javascript&logoColor=white) ![Static Badge](https://img.shields.io/badge/JQuery-0769AD?style=flat&logo=JQuery&logoColor=white) ![Static Badge](https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=Bootstrap&logoColor=white) 
 
 **백엔드** <br>
-![Static Badge](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white) ![Static Badge](https://img.shields.io/badge/SpringFramework-6DB33F?style=flat&logo=CSS3&logoColor=white) ![Static Badge](https://img.shields.io/badge/oracle-F80000?style=flat&logo=CSS3&logoColor=white) ![Static Badge](https://img.shields.io/badge/ApacheTomcat-F8DC75?style=flat&logo=Bootstrap&logoColor=white) 
+![Static Badge](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white) ![Static Badge](https://img.shields.io/badge/SpringFramework-6DB33F?style=flat&logo=CSS3&logoColor=white) ![Static Badge](https://img.shields.io/badge/MySql-F80000?style=flat&logo=CSS3&logoColor=white) ![Static Badge](https://img.shields.io/badge/AWS RDS-F8DC75?style=flat&logo=AWS&logoColor=white) 
 
 
 ## 📌주요 기능
