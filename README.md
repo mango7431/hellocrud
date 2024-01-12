@@ -23,6 +23,8 @@
 #### 🤝 Collaboration Tools 🤝
 - Github <br>
 
+#### ⚙️ERD 다이어그램
+![ERD]{https://github.com/mango7431/hellocrud/issues/1#issue-2078102611}
 
 
 #### 🛠 Project Tools 🛠 
